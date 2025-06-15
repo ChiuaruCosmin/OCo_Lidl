@@ -5,7 +5,7 @@ try {
     $db = new PDO("sqlite:$dbPath");
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Tabelul utilizatori
+    
     $db->exec("CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         username TEXT UNIQUE NOT NULL,
@@ -13,7 +13,7 @@ try {
         email TEXT
     )");
 
-    // Utilizator admin default
+    
     $stmt = $db->prepare("INSERT OR IGNORE INTO users (username, password, email)
                           VALUES (:u, :p, :e)");
     $stmt->execute([
@@ -22,7 +22,7 @@ try {
         ':e' => 'admin@example.com'
     ]);
 
-    // Tabelul obiecte
+    
     $db->exec("CREATE TABLE IF NOT EXISTS obiecte (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         titlu TEXT NOT NULL,
@@ -31,7 +31,7 @@ try {
         an INTEGER
     )");
 
-    // 🔥 Tabelul colectii
+    
     $db->exec("CREATE TABLE IF NOT EXISTS colectii (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         user TEXT NOT NULL,
@@ -40,7 +40,7 @@ try {
         imagine TEXT DEFAULT 'assets/default.png'
     )");
 
-    // 🔧 (Opțional) Date de test inițiale
+    
     $db->exec("INSERT INTO colectii (user, titlu, nr_obiecte, imagine)
                VALUES
                ('admin', 'Timbre', 184, 'assets/timbre.png'),
