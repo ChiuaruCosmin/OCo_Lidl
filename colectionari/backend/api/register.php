@@ -13,6 +13,11 @@ if (!$username || !$password || !$email) {
     exit;
 }
 
+if (strlen($password) < 6) {
+    echo json_encode(['success' => false, 'message' => 'Parola trebuie să aibă cel puțin 6 caractere']);
+    exit;
+}
+
 try {
     $db = connectDB();
 
@@ -24,14 +29,26 @@ try {
         exit;
     }
 
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
     $stmt = $db->prepare("INSERT INTO users (username, password, email) VALUES (?, ?, ?)");
-    $stmt->execute([$username, $password, $email]);
+    $stmt->execute([$username, $hashedPassword, $email]);
+
+    $src = __DIR__ . '/../../assets/avatars/defuser.png';
+    $dst = __DIR__ . '/../../assets/avatars/' . $username . '.png';
+
+    if (file_exists($src)) {
+        if (!is_dir(dirname($dst))) {
+            mkdir(dirname($dst), 0777, true);
+        }
+        copy($src, $dst);
+    }
 
     echo json_encode(['success' => true]);
 } catch (PDOException $e) {
     echo json_encode([
         'success' => false,
         'message' => 'Eroare la salvare',
-        'error' => $e->getMessage() 
+        'error' => $e->getMessage()
     ]);
 }

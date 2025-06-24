@@ -1,48 +1,46 @@
-/* Stiluri pentru login.css */
 body {
   margin: 0;
-  padding: 20px; /* Spațiu general pe lângă întregul bloc */
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background-color: #3d4147; /* Fundalul principal al paginii */
-  color: #EAEAEB;
+  padding: 20px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #3d4147;
+  color: #eaeaeb;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centrează blocurile h2, form, p */
+  align-items: center;
   justify-content: center;
   min-height: 100vh;
   box-sizing: border-box;
 }
 
-h2 { /* Titlul "Autentificare" */
+h2 {
   font-size: 2.4em;
-  color: #FFFFFF;
+  color: #ffffff;
   text-align: center;
   font-weight: 800;
-  background-color: #2C2C2E; /* MODIFICAT: Fundalul cardului */
-  padding: 30px 35px 20px 35px; /* Padding ajustat */
-  margin-bottom: 0; /* Eliminăm marginea de jos pentru a se lipi de form */
-  width: 100%;
-  max-width: 380px; /* Aceeași lățime ca form */
-  box-sizing: border-box;
-  border-top-left-radius: 18px;   /* MODIFICAT: Colțuri rotunjite sus */
-  border-top-right-radius: 18px;  /* MODIFICAT: Colțuri rotunjite sus */
-}
-
-form#loginForm {
-  background-color: #2C2C2E; /* Fundalul cardului */
-  padding: 25px 35px; /* Padding ajustat, mai ales sus/jos */
+  background-color: #2c2c2e;
+  padding: 30px 35px 20px 35px;
+  margin-bottom: 0;
   width: 100%;
   max-width: 380px;
   box-sizing: border-box;
-  border-radius: 0; /* MODIFICAT: Eliminăm rotunjirea de aici dacă se continuă cu h2/p */
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.35); /* Păstrăm umbra aici */
-  /* Dacă umbra arată ciudat, o putem elimina: box-shadow: none; */
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+}
+
+form#loginForm {
+  background-color: #2c2c2e;
+  padding: 25px 35px;
+  width: 100%;
+  max-width: 380px;
+  box-sizing: border-box;
+  border-radius: 0;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.35);
 }
 
 form#loginForm label {
   display: block;
   font-size: 0.9em;
-  color: #AEAEB2;
+  color: #aeaeb2;
   margin-bottom: 8px;
   font-weight: 500;
   text-align: left;
@@ -55,7 +53,7 @@ form#loginForm input[type="password"] {
   background-color: #3d4147 !important;
   border: 1px solid #545458;
   border-radius: 10px;
-  color: #FFFFFF !important;
+  color: #ffffff !important;
   font-size: 1em;
   box-sizing: border-box;
   margin-bottom: 20px;
@@ -70,25 +68,25 @@ form#loginForm input[type="password"]:-webkit-autofill:hover,
 form#loginForm input[type="password"]:-webkit-autofill:focus,
 form#loginForm input[type="password"]:-webkit-autofill:active {
   border: 1px solid #545458 !important;
-  -webkit-text-fill-color: #FFFFFF !important;
+  -webkit-text-fill-color: #ffffff !important;
   -webkit-box-shadow: 0 0 0px 1000px #3d4147 inset !important;
-  caret-color: #FFFFFF !important;
+  caret-color: #ffffff !important;
   transition: background-color 5000s ease-in-out 0s;
 }
 
 form#loginForm input[type="text"]:focus,
 form#loginForm input[type="password"]:focus {
   outline: none;
-  border-color: #0A84FF;
+  border-color: #0a84ff;
   box-shadow: 0 0 0 2px rgba(10, 132, 255, 0.3);
-  color: #FFFFFF !important;
+  color: #ffffff !important;
 }
 
 form#loginForm button[type="submit"] {
   width: 100%;
   padding: 15px;
   background-color: #3d4147;
-  color: #FFFFFF;
+  color: #ffffff;
   border: 1px solid #545458;
   border-radius: 10px;
   font-size: 1.05em;
@@ -103,22 +101,22 @@ form#loginForm button[type="submit"]:hover {
   border-color: #6a6d74;
 }
 
-body > p { 
+body > p {
   text-align: center;
   font-size: 0.95em;
-  color: #AEAEB2;
-  background-color: #2C2C2E; 
-  padding: 20px 35px 30px 35px; 
-  margin-top: 0; 
+  color: #aeaeb2;
+  background-color: #2c2c2e;
+  padding: 20px 35px 30px 35px;
+  margin-top: 0;
   width: 100%;
-  max-width: 380px; 
+  max-width: 380px;
   box-sizing: border-box;
-  border-bottom-left-radius: 18px; 
+  border-bottom-left-radius: 18px;
   border-bottom-right-radius: 18px;
 }
 
 body > p a {
-  color: #FFFFFF;
+  color: #ffffff;
   text-decoration: none;
   font-weight: 600;
 }
@@ -127,10 +125,11 @@ body > p a:hover {
   text-decoration: underline;
 }
 
-
 @media (max-width: 480px) {
-  h2, form#loginForm, body > p { 
-    max-width: calc(100% - 40px); 
+  h2,
+  form#loginForm,
+  body > p {
+    max-width: calc(100% - 40px);
   }
   h2 {
     font-size: 2em;

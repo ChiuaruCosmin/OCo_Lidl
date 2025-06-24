@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <title>OCo – Obiecte Colecționabile</title>
+    <link rel="stylesheet" href="css/raport.css" />
+  </head>
+  <body>
+    <article
+      role="doc-article"
+      itemscope
+      itemtype="http://schema.org/ScholarlyArticle"
+    >
+      <h1 itemprop="headline">OCo – Obiecte Colecționabile</h1>
+
+      <section id="abstract">
+        <h2>Abstract</h2>
+        <p itemprop="description">
+          OCo este o aplicație Web care le permite colecționarilor să-și
+          gestioneze obiectele, să le partajeze, să le vândă, să vizualizeze
+          statistici și să interacționeze prin oferte.
+        </p>
+      </section>
+
+      <section id="introduction">
+        <h2>1. Introducere</h2>
+        <p>
+          Scopul proiectului este de a oferi o soluție pentru colecționari de
+          obiecte care doresc să își organizeze digital colecțiile.
+        </p>
+      </section>
+
+      <section id="architecture">
+        <h2>2. Arhitectură</h2>
+        <p>
+          Arhitectura aplicației este monolitică și a fost documentată folosind
+          modelul C4 (Context, Container, Component, Code).
+        </p>
+        <h2>Diagrama C4 dimensiunea 1- Context</h2>
+        <div class="diagram-frame">
+          <img src="diagramaC4/c1.png" alt="Diagrama C1" />
+        </div>
+
+        <h2>Diagrama C4 dimensiunea 2- Container</h2>
+        <img
+          src="diagramaC4/c2.png"
+          alt="Diagrama C2"
+          width="1500"
+          height="700"
+        />
+        <h2>Diagrama C4 dimensiunea 3- Component</h2>
+        <img
+          src="diagramaC4/c3.png"
+          alt="Diagrama C3"
+          width="1500"
+          height="700"
+        />
+        <h2>Diagrama C4 dimensiunea 4- Code</h2>
+        <img
+          src="diagramaC4/c4.png"
+          alt="Diagrama C4"
+          width="1500"
+          height="700"
+        />
+
+        <h3>2.1 Componente principale</h3>
+        <ul>
+          <li><strong>Frontend:</strong> HTML, CSS, JavaScript (Vanilla)</li>
+          <li><strong>Backend:</strong> PHP</li>
+          <li><strong>Bază de date:</strong> SQLite</li>
+        </ul>
+      </section>
+
+      <section id="functional-req">
+        <h2>3. Cerințe Funcționale</h2>
+        <ul>
+          <li>Utilizatorii trebuie să se poată autentifica</li>
+          <li>Utilizatorii pot crea colecții și obiecte</li>
+          <li>Obiectele pot fi puse la vânzare</li>
+          <li>Se pot face și accepta oferte</li>
+          <li>Statistici pot fi exportate în CSV/PDF</li>
+          <li>Colecțiile pot fi filtrate multi-criterial</li>
+        </ul>
+
+        <h3>3.2 Funcționalitate: Autentificare și criptare</h3>
+        <p>
+          Formularul de login trimite datele la
+          <code>backend/api/login.php</code>. Parolele sunt criptate cu
+          <code>password_hash()</code> și validate cu
+          <code>password_verify()</code>. Datele de sesiune sunt stocate în
+          <code>$_SESSION</code>.
+        </p>
+
+        <h3>3.3 Funcționalitate: Creare colecție</h3>
+        <p>
+          Utilizatorul introduce un titlu și o imagine. Acestea sunt validate și
+          salvate prin <code>adauga_colectie.php</code>, care le asociază cu
+          <code>$_SESSION['username']</code>.
+        </p>
+
+        <h3>3.4 Funcționalitate: Adăugare obiect într-o colecție</h3>
+        <p>
+          Utilizatorul selectează o colecție și accesează formularul de
+          adăugare. Completează titlu, imagine, valoare estimată, țară, an,
+          material, perioadă, etichetă, descriere și istoric.
+        </p>
+        <p>
+          Validările sunt realizate în JavaScript și PHP. Imaginea este
+          încărcată în <code>assets/uploads</code> iar datele sunt inserate în
+          tabela <code>obiecte</code> prin
+          <code>backend/api/adauga_obiecte.php</code>.
+        </p>
+
+        <h3>3.5 Funcționalitate: Vânzare obiect</h3>
+        <p>
+          Un obiect poate fi scos la vânzare din pagina colecției. Se introduce
+          prețul, iar obiectul este marcat cu <code>de_vanzare = 1</code>.
+          Acesta devine vizibil în <code>cumpara_obiecte.php</code>.
+        </p>
+
+        <h3>3.6 Funcționalitate: Trimitere ofertă</h3>
+        <p>
+          Un utilizator complet autentificat poate trimite o ofertă pentru un
+          obiect. Se completează un formular cu preț, date contractuale și
+          adresă, trimis prin <code>trimite_oferta.php</code> spre tabela
+          <code>oferte</code>.
+        </p>
+
+        <h3>3.7 Funcționalitate: Acceptare sau refuz ofertă</h3>
+        <p>
+          Proprietarul obiectului accesează lista ofertelor. Prin
+          <code>accepta_oferta.php</code> obiectul este marcat ca vândut, iar
+          datele ofertantului devin vizibile.
+        </p>
+
+        <h3>3.8 Funcționalitate: Filtrare multi-criterială</h3>
+        <p>
+          Se pot aplica simultan filtre pe titlu, valoare, an, țară, etichetă,
+          material și perioadă atât pentru colecțiile personale, obiectele
+          scoase la vânzare, cât și pentru vizionarea colecțiilor celorlalți
+          utilizatori. Filtrarea se face asincron prin
+          <code>filtru_colectii.php</code> pentru colecțiile personale, prin
+          <code>filtre_dashboard.php</code> pentru colecțtiile publicate de
+          ceilalti utilizatori și prin
+          <code>lista_obiecte_vanzare.php</code> pentru obiectele afișate la
+          vânzare.
+        </p>
+
+        <h3>3.9 Funcționalitate: Export statistici în CSV/PDF</h3>
+        <p>
+          Utilizatorii pot exporta statisticile în CSV sau PDF. Cererea este
+          procesată de un script PHP care generează fișierul la cerere pe baza
+          datelor din SQLite.
+        </p>
+      </section>
+
+      <section id="non-functional-req">
+        <h2>4. Cerințe Non-Funcționale</h2>
+        <ul>
+          <li>Aplicația rulează local cu XAMPP</li>
+          <li>Frontend responsive în HTML/CSS</li>
+          <li>Imaginile sunt stocate local</li>
+          <li>Codul este open-source sub licență MIT</li>
+        </ul>
+        <h3>4.1 Măsuri de validare și securitate</h3>
+        <p>
+          Toate datele sunt validate client-side și server-side. Parolele sunt
+          criptate, SQL Injection este prevenit cu <code>PDO::prepare()</code>,
+          iar atacurile XSS sunt limitate cu <code>htmlspecialchars()</code>.
+        </p>
+      </section>
+
+      <section id="ui-design">
+        <h2>5. Interfață și design</h2>
+        <p>
+          Design-ul este minimalist, cu contrast puternic pentru lizibilitate,
+          structurat pe carduri și optimizat pentru mobil. Nu sunt folosite
+          framework-uri externe.
+        </p>
+      </section>
+
+      <section id="data-model">
+        <h2>6. Modelare date</h2>
+        <ul>
+          <li><code>users</code>: id, username, password, email</li>
+          <li><code>colectii</code>: id, user, titlu, imagine</li>
+          <li>
+            <code>obiecte</code>: id, colectie_id, titlu, descriere, valoare,
+            etc.
+          </li>
+          <li>
+            <code>oferte</code>: id, obiect_id, ofertant, pret, adresa, contract
+          </li>
+          <li>
+            <code>tranzactii</code>: id, obiect_id, cumparator, data, pret
+          </li>
+        </ul>
+        <p>
+          Datele de test au fost introduse manual pentru a acoperi scenarii
+          variate.
+        </p>
+      </section>
+
+      <section id="license">
+        <h2>7. Licență</h2>
+        <p>
+          Proiectul este distribuit sub licență MIT. Toate resursele utilizate
+          respectă Creative Commons sau au fost dezvoltate manual.
+        </p>
+      </section>
+
+      <section id="video">
+        <h2>8. Prezentare video</h2>
+        <p>Demo video</p>
+        <video width="800" controls>
+          <source src="diagramaC4/Prezentare_Video_OCo.mkv" type="video/mp4" />
+        </video>
+      </section>
+
+      <section id="references">
+        <h2>10. Bibliografie</h2>
+        <ul>
+          <li>
+            <a href="https://developer.mozilla.org/"
+              >MDN Web Docs – HTML, CSS, JavaScript</a
+            >
+          </li>
+          <li>
+            <a href="https://www.php.net/manual/en/"
+              >PHP Manual – Official Documentation</a
+            >
+          </li>
+          <li>
+            <a href="https://www.sqlite.org/docs.html">SQLite Documentation</a>
+          </li>
+          <li><a href="https://app.diagrams.net/">C4 diagram tool</a></li>
+        </ul>
+      </section>
+
+      <section id="author">
+        <h2>9. Autori</h2>
+        <p>Echipa Lidl (Albert Andreea, Chiuaru Cosmin)</p>
+      </section>
+    </article>
+  </body>
+</html>

@@ -21,4 +21,4 @@ document.getElementById('loginForm')?.addEventListener('submit', async function 
   } else {
     alert('Eroare: ' + data.message);
   }
-});
+}); 

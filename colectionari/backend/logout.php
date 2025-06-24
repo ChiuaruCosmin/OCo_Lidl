@@ -3,6 +3,6 @@ session_start();
 session_destroy();
 
 
-header('Location: /colectionari/landing.html');
+header('Location: /colectionari/landing.php');
 exit;
 ?>

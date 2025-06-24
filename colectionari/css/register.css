@@ -1,10 +1,9 @@
-
 body {
   margin: 0;
   padding: 20px;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #3d4147;
-  color: #EAEAEB;
+  color: #eaeaeb;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,7 +12,7 @@ body {
 }
 
 .form-container {
-  background-color: #2C2C2E;
+  background-color: #2c2c2e;
   padding: 30px 35px;
   border-radius: 18px;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.35);
@@ -25,7 +24,7 @@ body {
 
 .form-container h2 {
   font-size: 2.4em;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-top: 0;
   margin-bottom: 30px;
   font-weight: 800;
@@ -38,7 +37,7 @@ form#registerForm {
 form#registerForm label {
   display: block;
   font-size: 0.9em;
-  color: #AEAEB2;
+  color: #aeaeb2;
   margin-bottom: 8px;
   font-weight: 500;
 }
@@ -48,16 +47,15 @@ form#registerForm input[type="password"],
 form#registerForm input[type="email"] {
   width: 100%;
   padding: 14px 16px;
-  background-color: #3d4147 !important; 
+  background-color: #3d4147 !important;
   border: 1px solid #545458;
   border-radius: 10px;
-  color: #F2F2F7;
+  color: #f2f2f7;
   font-size: 1em;
   box-sizing: border-box;
   margin-bottom: 20px;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
-
 
 form#registerForm input[type="text"]:-webkit-autofill,
 form#registerForm input[type="text"]:-webkit-autofill:hover,
@@ -71,29 +69,25 @@ form#registerForm input[type="email"]:-webkit-autofill,
 form#registerForm input[type="email"]:-webkit-autofill:hover,
 form#registerForm input[type="email"]:-webkit-autofill:focus,
 form#registerForm input[type="email"]:-webkit-autofill:active {
-  border: 1px solid #545458 !important; 
-  -webkit-text-fill-color: #F2F2F7 !important;
-  -webkit-box-shadow: 0 0 0px 1000px #3d4147 inset !important; 
-  caret-color: #F2F2F7; 
+  border: 1px solid #545458 !important;
+  -webkit-text-fill-color: #f2f2f7 !important;
+  -webkit-box-shadow: 0 0 0px 1000px #3d4147 inset !important;
+  caret-color: #f2f2f7;
 }
-
-
 
 form#registerForm input[type="text"]:focus,
 form#registerForm input[type="password"]:focus,
 form#registerForm input[type="email"]:focus {
   outline: none;
-  border-color: #0A84FF !important; 
-  box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.3) !important; 
-
+  border-color: #0a84ff !important;
+  box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.3) !important;
 }
-
 
 form#registerForm button.register-btn {
   width: 100%;
   padding: 15px;
   background-color: #3d4147;
-  color: #FFFFFF;
+  color: #ffffff;
   border: 1px solid #545458;
   border-radius: 10px;
   font-size: 1.05em;
@@ -111,11 +105,11 @@ form#registerForm button.register-btn:hover {
 .form-container > p {
   margin-top: 25px;
   font-size: 0.95em;
-  color: #AEAEB2;
+  color: #aeaeb2;
 }
 
 .form-container > p a {
-  color: #FFFFFF;
+  color: #ffffff;
   text-decoration: none;
   font-weight: 600;
 }
