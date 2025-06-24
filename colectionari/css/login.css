@@ -1,0 +1,152 @@
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #3d4147;
+  color: #eaeaeb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+h2 {
+  font-size: 2.4em;
+  color: #ffffff;
+  text-align: center;
+  font-weight: 800;
+  background-color: #2c2c2e;
+  padding: 30px 35px 20px 35px;
+  margin-bottom: 0;
+  width: 100%;
+  max-width: 380px;
+  box-sizing: border-box;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+}
+
+form#loginForm {
+  background-color: #2c2c2e;
+  padding: 25px 35px;
+  width: 100%;
+  max-width: 380px;
+  box-sizing: border-box;
+  border-radius: 0;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+form#loginForm label {
+  display: block;
+  font-size: 0.9em;
+  color: #aeaeb2;
+  margin-bottom: 8px;
+  font-weight: 500;
+  text-align: left;
+}
+
+form#loginForm input[type="text"],
+form#loginForm input[type="password"] {
+  width: 100%;
+  padding: 14px 16px;
+  background-color: #3d4147 !important;
+  border: 1px solid #545458;
+  border-radius: 10px;
+  color: #ffffff !important;
+  font-size: 1em;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+form#loginForm input[type="text"]:-webkit-autofill,
+form#loginForm input[type="text"]:-webkit-autofill:hover,
+form#loginForm input[type="text"]:-webkit-autofill:focus,
+form#loginForm input[type="text"]:-webkit-autofill:active,
+form#loginForm input[type="password"]:-webkit-autofill,
+form#loginForm input[type="password"]:-webkit-autofill:hover,
+form#loginForm input[type="password"]:-webkit-autofill:focus,
+form#loginForm input[type="password"]:-webkit-autofill:active {
+  border: 1px solid #545458 !important;
+  -webkit-text-fill-color: #ffffff !important;
+  -webkit-box-shadow: 0 0 0px 1000px #3d4147 inset !important;
+  caret-color: #ffffff !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+form#loginForm input[type="text"]:focus,
+form#loginForm input[type="password"]:focus {
+  outline: none;
+  border-color: #0a84ff;
+  box-shadow: 0 0 0 2px rgba(10, 132, 255, 0.3);
+  color: #ffffff !important;
+}
+
+form#loginForm button[type="submit"] {
+  width: 100%;
+  padding: 15px;
+  background-color: #3d4147;
+  color: #ffffff;
+  border: 1px solid #545458;
+  border-radius: 10px;
+  font-size: 1.05em;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+form#loginForm button[type="submit"]:hover {
+  background-color: #4f525a;
+  border-color: #6a6d74;
+}
+
+body > p {
+  text-align: center;
+  font-size: 0.95em;
+  color: #aeaeb2;
+  background-color: #2c2c2e;
+  padding: 20px 35px 30px 35px;
+  margin-top: 0;
+  width: 100%;
+  max-width: 380px;
+  box-sizing: border-box;
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+}
+
+body > p a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+body > p a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  h2,
+  form#loginForm,
+  body > p {
+    max-width: calc(100% - 40px);
+  }
+  h2 {
+    font-size: 2em;
+    padding-top: 25px;
+    padding-bottom: 15px;
+  }
+  form#loginForm {
+    padding: 20px 25px;
+  }
+  body > p {
+    font-size: 0.9em;
+    padding-top: 15px;
+    padding-bottom: 25px;
+  }
+  form#loginForm input[type="text"],
+  form#loginForm input[type="password"],
+  form#loginForm button[type="submit"] {
+    font-size: 0.95em;
+  }
+}

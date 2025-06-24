@@ -1,0 +1,104 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f3f3f3;
+  color: #333;
+}
+
+h1,
+h2,
+h3 {
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 20px;
+}
+
+section {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+ul li:last-child {
+  border-bottom: none;
+}
+
+canvas {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+.export {
+  text-align: center;
+}
+
+.export .btn {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.export .btn:hover {
+  background-color: #2980b9;
+}
+
+.stats-personale h2,
+.stats-globale h2,
+.stats-grafic h2 {
+  margin-bottom: 15px;
+  font-size: 1.4em;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 5px;
+}
+
+.stats-personale,
+.stats-globale,
+.stats-grafic {
+  margin-bottom: 40px;
+}
+
+.stats-personale p,
+.stats-globale p,
+.export p {
+  font-style: italic;
+  color: #666;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.btn-back {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  background-color: #3498db;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.btn-back:hover {
+  background-color: #2980b9;
+}
