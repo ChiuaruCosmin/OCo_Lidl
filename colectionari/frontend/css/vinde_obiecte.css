@@ -1,0 +1,268 @@
+body {
+  background-color: #EBE3DB;
+  color: #3A2D28;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  padding: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #3A2D28;
+  font-size: 2.5em;
+  font-weight: 800;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #A48374;
+  font-size: 1.8em;
+  font-weight: 700;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #D1C7BD;
+}
+
+.btn-back {
+  display: inline-block;
+  background-color: #A48374;
+  color: #F1EDE6;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  margin-bottom: 30px;
+  font-weight: 600;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-back:hover {
+  background-color: #3A2D28;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.section {
+  margin-bottom: 40px;
+  background-color: #F1EDE6;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid #D1C7BD;
+}
+
+.vandute-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.vandut-card {
+  background-color: #F1EDE6;
+  color: #5C4F4A;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 1px solid #D1C7BD;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.vandut-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+.vandut-card img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #D1C7BD;
+}
+
+.vandut-card .info {
+  font-size: 1em;
+  width: 100%;
+  text-align: left;
+  line-height: 1.5;
+}
+
+.vandut-card .info p {
+  margin: 5px 0;
+  color: #3A2D28;
+}
+
+.vandut-card strong {
+  color: #A48374;
+  font-size: 1.2em;
+  font-weight: 700;
+  margin-right: 5px;
+}
+
+.oferte-box {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #EBE3DB;
+  border-radius: 10px;
+  text-align: left;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+  border: 1px solid #CBAD8D;
+}
+
+.oferte-box h4 {
+  margin: 0 0 12px 0;
+  color: #5C4F4A;
+  font-size: 1.15em;
+  font-weight: 600;
+  border-bottom: 1px dashed #D1C7BD;
+  padding-bottom: 8px;
+}
+
+.oferta-item {
+  border: 1px solid #D1C7BD;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 8px;
+  background-color: #F1EDE6;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.oferta-item p {
+  margin: 5px 0;
+  color: #3A2D28;
+  font-size: 0.95em;
+}
+
+.oferta-item strong {
+  color: #A48374;
+  font-size: 1.1em;
+}
+
+.oferta-item button {
+  background-color: #A48374;
+  color: #F1EDE6;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin: 5px 5px 0 0;
+  font-weight: 600;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.oferta-item button:last-child {
+  background-color: #B85F56;
+}
+
+.oferta-item button:hover {
+  background-color: #3A2D28;
+  transform: translateY(-1px);
+}
+
+.btn-scoate-vanzare {
+  background-color: #5C4F4A;
+  color: #F1EDE6;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 15px;
+  font-weight: 600;
+  font-size: 1em;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-scoate-vanzare:hover {
+  background-color: #281E19;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+  .container {
+      padding: 20px;
+  }
+  h1 {
+      font-size: 2em;
+  }
+  h2 {
+      font-size: 1.5em;
+  }
+  .btn-back {
+      padding: 8px 16px;
+  }
+  .section {
+      padding: 20px;
+  }
+  .vandute-grid {
+      grid-template-columns: 1fr;
+  }
+  .vandut-card {
+      padding: 15px;
+  }
+  .vandut-card img {
+      max-height: 150px;
+  }
+  .oferte-box {
+      padding: 12px;
+  }
+  .oferta-item {
+      padding: 10px;
+  }
+  .oferta-item button {
+      padding: 6px 12px;
+  }
+  .btn-scoate-vanzare {
+      padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+      padding: 15px;
+  }
+  h1 {
+      font-size: 1.8em;
+      margin-bottom: 20px;
+  }
+  h2 {
+      font-size: 1.3em;
+      margin-bottom: 15px;
+  }
+  .btn-back {
+      padding: 6px 12px;
+      font-size: 0.9em;
+  }
+  .section {
+      padding: 15px;
+  }
+  .vandute-grid {
+      grid-template-columns: 1fr;
+  }
+  .vandut-card {
+      padding: 12px;
+  }
+  .oferte-box {
+      padding: 10px;
+  }
+  .oferta-item {
+      padding: 8px;
+  }
+  .oferta-item button {
+      padding: 5px 10px;
+      font-size: 0.9em;
+  }
+}

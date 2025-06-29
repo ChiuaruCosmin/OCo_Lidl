@@ -1,0 +1,180 @@
+body {
+  background-color: #F1EDE6;
+  color: #5C4F4A;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+main {
+  background-color: #F1EDE6;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 90%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+h1 {
+  color: #3A2D28;
+  font-size: 2.2em;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.add-collection-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
+}
+
+label {
+  font-weight: 600;
+  color: #3A2D28;
+  font-size: 1.1em;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="file"] {
+  padding: 12px 15px;
+  border: 1px solid #D1C7BD;
+  border-radius: 8px;
+  font-size: 1em;
+  color: #5C4F4A;
+  background-color: #EBE3DB;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="file"]:focus {
+  outline: none;
+  border-color: #A48374;
+  box-shadow: 0 0 0 3px rgba(164, 131, 116, 0.2);
+}
+
+input[type="file"] {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.btn-add {
+  background-color: #A48374;
+  color: #F1EDE6;
+  padding: 14px 25px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  margin-top: 25px;
+  width: 100%;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-add:hover {
+  background-color: #3A2D28;
+  color: #F1EDE6;
+  transform: translateY(-2px);
+}
+
+#addCollectionMsg {
+  margin-top: 25px;
+  font-size: 1.1em;
+  color: #3A2D28;
+  font-weight: 600;
+  text-align: center;
+}
+
+#addCollectionMsg.success {
+    background-color: #D4EDDA;
+    color: #155724;
+    border: 1px solid #C3E6CB;
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+
+#addCollectionMsg.error {
+    background-color: #F8D7DA;
+    color: #B85F56;
+    border: 1px solid #F5C6CB;
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  main {
+    padding: 30px;
+    width: 95%;
+  }
+
+  h1 {
+    font-size: 1.8em;
+    margin-bottom: 25px;
+  }
+
+  label {
+    font-size: 1em;
+  }
+
+  input[type="text"],
+  input[type="file"] {
+    padding: 10px 12px;
+    font-size: 0.95em;
+  }
+
+  .btn-add {
+    padding: 12px 20px;
+    font-size: 1em;
+    margin-top: 20px;
+  }
+
+  #addCollectionMsg {
+    font-size: 1em;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.6em;
+    margin-bottom: 20px;
+  }
+
+  .add-collection-form {
+    gap: 15px;
+  }
+
+  input[type="text"],
+  input[type="file"] {
+    padding: 8px 10px;
+    font-size: 0.9em;
+  }
+
+  .btn-add {
+    padding: 10px 18px;
+    font-size: 0.95em;
+    margin-top: 15px;
+  }
+
+  #addCollectionMsg {
+    font-size: 0.95em;
+    margin-top: 15px;
+  }
+}

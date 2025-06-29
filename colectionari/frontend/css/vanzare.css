@@ -1,0 +1,93 @@
+body {
+  background-color: #EBE3DB;
+  color: #3A2D28;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  padding: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #3A2D28;
+  font-size: 2.5em;
+  font-weight: 700;
+}
+
+.btn-back {
+  display: inline-block;
+  background-color: #A48374;
+  color: #F1EDE6;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  margin-bottom: 30px;
+  font-weight: 600;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-back:hover {
+  background-color: #3A2D28;
+  transform: translateY(-2px);
+}
+
+.vanzare-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.vanzare-card {
+  background-color: #F1EDE6;
+  color: #5C4F4A;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 1px solid #D1C7BD;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.vanzare-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+.vanzare-card img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #D1C7BD;
+}
+
+.vanzare-card .info {
+  font-size: 1em;
+  line-height: 1.5;
+  margin: 5px 0;
+  text-align: left;
+  width: 100%;
+}
+
+.vanzare-card strong {
+  color: #A48374;
+  font-size: 1.2em;
+  font-weight: 700;
+  margin-right: 5px;
+}
+
+.vanzare-card p {
+  margin: 0;
+  padding: 0;
+}

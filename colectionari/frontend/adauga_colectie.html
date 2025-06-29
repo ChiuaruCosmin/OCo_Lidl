@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Adaugă colecție nouă</title>
+  <link rel="stylesheet" href="css/adauga_colectie.css" />
+</head>
+<body>
+  <main style="max-width: 500px; margin: 40px auto;">
+    <h1>Adaugă colecție nouă</h1>
+    <form id="addCollectionForm" enctype="multipart/form-data" class="add-collection-form">
+      <label for="titlu">Nume colecție:</label>
+      <input type="text" id="titlu" name="titlu" required placeholder="Ex: Timbre vechi" />
+
+      <label for="imagine">Poză colecție:</label>
+      <input type="file" id="imagine" name="imagine" accept="image/*" required />
+
+      <button type="submit" class="btn-add">Adaugă colecția</button>
+    </form>
+    <div id="addCollectionMsg" style="margin-top:20px;"></div>
+  </main>
+  <script src="js/adauga_colectie.js"></script>
+</body>
+</html> 

@@ -1,0 +1,140 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #EBE3DB;
+  color: #3A2D28;
+}
+
+h1 {
+  text-align: center;
+  color: #3A2D28;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  font-size: 2.5em;
+  font-weight: 800;
+}
+
+h2 {
+  text-align: center;
+  color: #A48374;
+  margin-top: 25px;
+  margin-bottom: 20px;
+  font-size: 1.8em;
+  font-weight: 700;
+}
+
+h3 {
+  text-align: center;
+  color: #5C4F4A;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  font-size: 1.4em;
+  font-weight: 600;
+}
+
+section {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 25px;
+  background-color: #F1EDE6;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid #D1C7BD;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  color: #3A2D28;
+}
+
+ul li {
+  padding: 10px 0;
+  border-bottom: 1px dashed #D1C7BD;
+  font-size: 1.1em;
+}
+
+ul li:last-child {
+  border-bottom: none;
+}
+
+canvas {
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.export {
+  text-align: center;
+}
+
+.export .btn {
+  display: inline-block;
+  margin: 15px 10px;
+  padding: 12px 25px;
+  background-color: #A48374;
+  color: #F1EDE6;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1em;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.export .btn:hover {
+  background-color: #3A2D28;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.stats-personale h2,
+.stats-globale h2,
+.stats-grafic h2 {
+  margin-bottom: 15px;
+  font-size: 1.8em;
+  border-bottom: 2px solid #D1C7BD;
+  padding-bottom: 8px;
+}
+
+.stats-personale,
+.stats-globale,
+.stats-grafic {
+  margin-bottom: 40px;
+}
+
+.stats-personale p,
+.stats-globale p,
+.export p {
+  font-style: italic;
+  color: #5C4F4A;
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 0.95em;
+}
+
+.btn-back {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  padding: 12px 20px;
+  background-color: #A48374;
+  color: #F1EDE6;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-back:hover {
+  background-color: #3A2D28;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}

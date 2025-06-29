@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard - Colecțiile Tale</title>
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/popular_modal.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-links">
+      <a href="dashboard.html">🏠 Acasă</a>
+      <a href="colectiile_mele.html">📚 Colecțiile mele</a>
+      <a href="cumpara_obiecte.html">🏷️ Cumpără</a>
+      <a href="vinde_obiecte.html">💵 Vinde</a>
+    </div>
+    <div class="logout-button">
+      <a href="raport.html" class="logout-link">Raport</a>
+      <button id="logoutBtn" class="logout-link">Deconectare</button>
+    </div>
+  </nav>
+
+  <main class="dashboard-container">
+    <div class="left-panel">
+      <h1 id="greeting">Bun venit!</h1>
+      <p class="subtitle">Iată cele mai populare colecții din această săptămână:</p>
+      <div class="collection-grid" id="popularCollections"></div>
+      
+      <div class="search-bar">
+        <span class="icon">🔍</span>
+        <input type="text" placeholder="Caută colecții sau obiecte..." id="searchInput" readonly />
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <div class="user-info-header">
+        <img class="avatar" id="avatar" src="assets/avatars/avatar.png" alt="Avatar" />
+        <div class="user-details">
+          <h3 id="username">Nume utilizator</h3>
+          <p class="email" id="email">email@exemplu.ro</p>
+        </div>
+      </div>
+      <div class="profile-links">
+        <a href="istoric_tranzactii.html" class="btn">Istoric tranzacții</a>
+        <a href="statistici.html">Statistici</a>
+        <a href="#" class="btn" id="reportProblemBtn" style="display:none;">Raportează o problemă</a>
+      </div>
+      <button class="edit-profile-btn" id="editProfileBtn">Editează profilul</button>
+    </div>
+  </main>
+
+  <div class="modal-overlay" id="editModal" style="display:none;">
+    <div class="modal">
+      <div class="modal-content">
+        <span class="close-btn" id="closeEditModal">&times;</span>
+        <h2>Editare profil</h2>
+        <form id="editProfileForm" enctype="multipart/form-data">
+          <label for="new_username">Username nou:</label>
+          <input type="text" id="new_username" name="new_username" />
+
+          <label for="new_email">Email nou:</label>
+          <input type="email" id="new_email" name="new_email" />
+
+          <label for="new_password">Parolă nouă:</label>
+          <input type="password" id="new_password" name="new_password" />
+
+          <label for="profile_pic">Poză profil:</label>
+          <input type="file" id="profile_pic" name="profile_pic" accept="image/*" />
+          <div style="text-align:center;margin:10px 0;">
+            <img id="profilePicPreview" src="assets/avatars/avatar.png" alt="Preview poză" style="max-width:90px;max-height:90px;border-radius:50%;display:none;box-shadow:0 2px 8px rgba(0,0,0,0.13);margin:0 auto;" />
+          </div>
+
+          <div class="modal-actions">
+            <button type="submit" class="save-btn">Salvează</button>
+            <button type="button" class="cancel-btn" id="cancelEditBtn">Anulează</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="popular-collection-modal" style="display:none;">
+    <div class="modal" style="max-width:520px;">
+      <h2 id="popular-modal-title">Detalii colecție</h2>
+      <div id="popular-modal-content">
+        <p>Se încarcă...</p>
+      </div>
+      <div class="modal-buttons">
+        <button onclick="closePopularModal()">Închide</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="dashboard-collection-modal" style="display:none;">
+    <div class="modal" style="max-width:520px;">
+      <h2 id="dashboard-modal-title">Detalii colecție</h2>
+      <div id="dashboard-modal-content">
+        <p>Se încarcă...</p>
+      </div>
+      <div class="modal-buttons">
+        <button onclick="closeDashboardCollectionModal()">Închide</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="dashboard-object-modal" style="display:none;">
+    <div class="modal" style="max-width:520px;">
+      <h2 id="dashboard-object-modal-title">Detalii obiect</h2>
+      <div id="dashboard-object-modal-content">
+        <p>Se încarcă...</p>
+      </div>
+      <div class="modal-buttons">
+        <button onclick="closeDashboardObjectModal()">Închide</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="dashboard-search-modal" style="display:none;">
+    <div class="modal" style="max-width:700px;">
+      <h2 style="text-align:center;margin-bottom:18px;">Căutare și filtrare colecții</h2>
+      <form id="dashboardFilterForm" class="dashboard-filter-form">
+        <div class="filter-row">
+          <input type="text" name="titlu" placeholder="Titlu colecție" />
+          <input type="number" name="valoare_min" placeholder="Valoare min" min="0" />
+          <input type="number" name="valoare_max" placeholder="Valoare max" min="0" />
+        </div>
+        <div class="filter-row">
+          <input type="number" name="an" placeholder="An" min="0" />
+          <input type="text" name="tara" placeholder="Țara" />
+          <input type="text" name="perioada" placeholder="Perioada" />
+        </div>
+        <div class="filter-row">
+          <input type="text" name="eticheta" placeholder="Etichetă" />
+          <input type="text" name="material" placeholder="Material" />
+        </div>
+        <div style="display:flex;gap:10px;justify-content:center;margin-top:10px;">
+          <button type="submit" class="btn">Caută colecții</button>
+          <button type="button" class="btn" id="closeDashboardSearchModal" style="background:#4a4a4a;">Închide</button>
+        </div>
+      </form>
+      <div class="dashboard-collections-scroll">
+        <div id="dashboardCollectionsResults" class="dashboard-collections-results"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="report-problem-modal" style="display:none;">
+    <div class="modal" style="max-width:420px;">
+      <h2 style="text-align:center;margin-bottom:18px;">Raportează o problemă</h2>
+      <form id="reportProblemForm" class="dashboard-filter-form" style="box-shadow:none;background:#232326;">
+        <label for="problemText" style="color:#FFD500;">Descrie problema:</label>
+        <textarea id="problemText" name="problemText" rows="5" style="width:100%;border-radius:8px;padding:10px;background:#18181a;color:#fff;border:1.5px solid #4f6b8f;"></textarea>
+        <div style="display:flex;gap:10px;justify-content:center;margin-top:10px;">
+          <button type="submit" class="btn">Trimite</button>
+          <button type="button" class="btn" id="closeReportProblemModal" style="background:#4a4a4a;">Închide</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/dashboard.js"></script>
+  <script>
+  const profilePicInput = document.getElementById('profile_pic');
+  const profilePicPreview = document.getElementById('profilePicPreview');
+  if(profilePicInput && profilePicPreview) {
+    profilePicInput.addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if(file) {
+        const reader = new FileReader();
+        reader.onload = function(ev) {
+          profilePicPreview.src = ev.target.result;
+          profilePicPreview.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+      } else {
+        profilePicPreview.style.display = 'none';
+      }
+    });
+  }
+  </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Statistici generale</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/statistici.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<a href="dashboard.html" class="btn-back">Înapoi la pagină principală</a>
+<br><br>
+<h1>Statistici generale</h1>
+
+<section class="stats-personale">
+    <p>Aceste statistici reflectă datele tale personale din cont.</p>
+    <h2>Statistici personale</h2>
+    <ul>
+        <li class="total-obiecte">Total obiecte:</li>
+        <li class="total-colectii">Total colecții:</li>
+        <li class="valoare-totala">Valoare totală estimată:</li>
+        <li class="top-categorii-personale">Top categorii personale:</li>
+    </ul>
+    <h3>Evoluție temporală</h3>
+    <canvas id="evolutieChart" width="600" height="300"></canvas>
+</section>
+
+<section class="stats-globale">
+    <p>Clasamentele sunt calculate pe baza tuturor colecțiilor și obiectelor partajate.</p>
+    <h2>Clasamente globale</h2>
+    <ul>
+        <li class="top-categorii">Top 5 categorii:</li>
+        <li class="top-colectie">Top colecție:</li>
+        <li class="top-user">Cel mai activ utilizator:</li>
+    </ul>
+</section>
+
+<section class="stats-grafic">
+    <h2>Distribuția pe categorii (Top 5)</h2>
+    <canvas id="categorieChart" width="600" height="400"></canvas>
+</section>
+
+<section class="export">
+    <p>Poți exporta datele tale în diferite formate pentru backup sau analiză.</p>
+    <h2>Exportă statistici</h2>
+    <button class="btn" id="export-csv">CSV</button>
+    <button class="btn" id="export-pdf">PDF</button>
+</section>
+
+<script src="js/statistici.js"></script>
+</body>
+</html>

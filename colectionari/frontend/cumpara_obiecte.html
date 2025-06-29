@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Cumpără obiecte și colecții</title>
+    <link rel="stylesheet" href="css/cumpara.css">
+    <link rel="stylesheet" href="css/detalii_colectie_modal.css">
+</head>
+<body>
+<div class="top-bar">
+    <a href="dashboard.html">Înapoi la pagina principală</a>
+</div>
+
+<main>
+    <h1>Obiecte și colecții de vânzare</h1>
+    
+    <button id="toggle-filtru-obiecte" class="toggle-filtru-btn">🔍 Filtrează obiectele</button>
+    <div class="filter-section" id="filtru-obiecte-section" style="display:none;">
+        <h2>Filtre obiecte</h2>
+        <div class="filter-bar">
+            <input type="text" id="titlu" placeholder="Titlu obiect">
+            <input type="number" id="valoare_min" placeholder="Preț minim">
+            <input type="number" id="valoare_max" placeholder="Preț maxim">
+            <input type="number" id="an" placeholder="An">
+            <input type="text" id="tara" placeholder="Țara">
+            <input type="text" id="material" placeholder="Material">
+            <select id="eticheta">
+                <option value="">Etichetă</option>
+                <option value="1">Da</option>
+                <option value="0">Nu</option>
+            </select>
+            <button onclick="filtreazaObiecte()">Aplică filtre</button>
+            <button onclick="stergeFiltreObiecte()">Șterge filtre</button>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Obiecte de vânzare</h2>
+        <div id="lista-obiecte" class="obiecte-grid"></div>
+    </div>
+
+    <button id="toggle-filtru-colectii" class="toggle-filtru-btn">🔍 Filtrează colecțiile</button>
+    <div class="filter-section" id="filtru-colectii-section" style="display:none;">
+        <h2>Filtre colecții</h2>
+        <div class="filter-bar">
+            <input type="text" id="titlu_colectie" placeholder="Titlu colecție">
+            <input type="number" id="pret_min_colectie" placeholder="Preț minim">
+            <input type="number" id="pret_max_colectie" placeholder="Preț maxim">
+            <button onclick="filtreazaColectii()">Aplică filtre</button>
+            <button onclick="stergeFiltreColectii()">Șterge filtre</button>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Colecții de vânzare</h2>
+        <div id="lista-colectii" class="colectii-grid"></div>
+    </div>
+</main>
+
+<div id="oferta-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <h2>Trimite ofertă pentru obiect</h2>
+        <form id="oferta-form">
+            <input type="hidden" id="obiect_id">
+            <label>Preț oferit (lei):</label>
+            <input type="number" id="pret_ofertat" required>
+            <label>Date contract:</label>
+            <textarea id="contract_info" required></textarea>
+            <label>Adresă livrare:</label>
+            <textarea id="adresa_livrare" required></textarea>
+            <div class="modal-buttons">
+                <button type="submit">Trimite</button>
+                <button type="button" onclick="closeModal()">Renunță</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="oferta-colectie-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <h2>Trimite ofertă pentru colecție</h2>
+        <form id="oferta-colectie-form">
+            <input type="hidden" id="colectie_id">
+            <label>Preț oferit (lei):</label>
+            <input type="number" id="pret_ofertat_colectie" required>
+            <label>Date contract:</label>
+            <textarea id="contract_info_colectie" required></textarea>
+            <label>Adresă livrare:</label>
+            <textarea id="adresa_livrare_colectie" required></textarea>
+            <div class="modal-buttons">
+                <button type="submit">Trimite</button>
+                <button type="button" onclick="closeColectieModal()">Renunță</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal-overlay" id="detalii-colectie-modal" style="display:none;">
+  <div class="modal">
+    <h2 id="modal-titlu-colectie">Detalii colecție</h2>
+    <div id="modal-content">
+      <p>Se încarcă...</p>
+    </div>
+    <div class="modal-buttons">
+      <button onclick="closeDetaliiColectieModal()">Închide</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="detalii-modal" style="display:none;">
+  <div class="modal">
+    <h2 id="modal-titlu">Detalii obiect</h2>
+    <div id="obiect-content">
+      <p>Se încarcă...</p>
+    </div>
+    <div class="modal-buttons">
+      <button onclick="closeDetaliiModal()">Închide</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/cumpara_obiecte.js"></script>
+<script>
+document.getElementById('toggle-filtru-obiecte').onclick = function() {
+  const sect = document.getElementById('filtru-obiecte-section');
+  sect.style.display = sect.style.display === 'none' ? 'block' : 'none';
+};
+document.getElementById('toggle-filtru-colectii').onclick = function() {
+  const sect = document.getElementById('filtru-colectii-section');
+  sect.style.display = sect.style.display === 'none' ? 'block' : 'none';
+};
+</script>
+</body>
+</html>

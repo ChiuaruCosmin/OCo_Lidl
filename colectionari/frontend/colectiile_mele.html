@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Colecțiile mele - Colecțiile Tale</title>
+  <link rel="stylesheet" href="css/colectiile_mele.css" />
+</head>
+<body>
+  <div class="page-header">
+    <h1>Colecțiile mele</h1>
+    <div class="header-actions">
+      <a class="btn-add" href="#" onclick="openAddCollectionModal(); return false;">+ Adaugă colecție nouă</a>
+      <a class="btn-add" href="dashboard.html">Înapoi la pagina principală</a>
+    </div>
+  </div>
+
+  <div class="dropdown-filter-toggle" onclick="toggleFilters()">
+    🔍 Filtrează colecțiile
+  </div>
+  
+  <div class="dropdown-filters" id="filterBox" style="display: none;">
+    <input type="text" id="search" placeholder="Titlu colecție">
+    <input type="number" id="valoare_min" placeholder="Valoare minimă">
+    <input type="number" id="valoare_max" placeholder="Valoare maximă">
+    <input type="number" id="an" placeholder="An">
+    <input type="text" id="tara" placeholder="Țara">
+    <input type="text" id="perioada" placeholder="Perioada utilizare">
+    <input type="text" id="material" placeholder="Material">
+    <select id="eticheta">
+      <option value="">Etichetă?</option>
+      <option value="1">Da</option>
+      <option value="0">Nu</option>
+    </select>
+    <button class="btn-apply" onclick="filtreaza()">Aplică filtre</button>
+    <button class="btn-clear" onclick="stergeFiltre()">Șterge filtre</button>
+  </div>
+
+  <div class="collections-wrapper">
+    <div class="collections-grid" id="colectiiContainer">
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-overlay" style="display:none;">
+    <div class="modal">
+      <h2 id="modal-title">Detalii colecție</h2>
+      <div id="modal-content">
+        <p>Se încarcă...</p>
+      </div>
+      <div class="modal-buttons">
+        <button class="btn-modal-small" onclick="closeModal()">Închide</button>
+        <button class="btn-modal-small" onclick="openAddObiectModal(currentId)">Adaugă obiecte</button>
+        <button class="btn-modal-small" id="pdf-export-btn">PDF</button>
+        <button class="btn-modal-small" id="csv-export-btn">CSV</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-obiect-overlay" style="display:none;">
+    <div class="modal">
+      <h2 id="obiect-title">Detalii obiect</h2>
+      <div id="obiect-content">
+        <p>Se încarcă...</p>
+      </div>
+      <div class="modal-buttons">
+        <button onclick="closeObiectModal()">Închide</button>
+        <button onclick="stergeObiect()">Șterge</button>
+        <button id="edit-obiect-btn">Editează</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="add-collection-modal" style="display:none;">
+    <div class="modal" style="max-width:500px;">
+      <h2>Adaugă colecție nouă</h2>
+      <form id="addCollectionForm" enctype="multipart/form-data" class="add-collection-form">
+        <label for="titlu">Nume colecție:</label>
+        <input type="text" id="titlu" name="titlu" required placeholder="Ex: Timbre vechi" />
+        <label for="imagine">Poză colecție:</label>
+        <input type="file" id="imagine" name="imagine" accept="image/*" required />
+        <button type="submit" class="btn-add">Adaugă colecția</button>
+        <button type="button" onclick="closeAddCollectionModal()" class="btn-delete" style="margin-left:10px;">Anulează</button>
+      </form>
+      <div id="addCollectionMsg" style="margin-top:20px;"></div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="edit-collection-modal" style="display:none;">
+    <div class="modal" style="max-width:500px;">
+      <h2>Editează colecția</h2>
+      <form id="editCollectionForm" enctype="multipart/form-data" class="add-collection-form">
+        <label for="edit_titlu">Nume colecție:</label>
+        <input type="text" id="edit_titlu" name="titlu" required />
+        <label for="edit_imagine">Poză colecție (opțional):</label>
+        <input type="file" id="edit_imagine" name="imagine" accept="image/*" />
+        <input type="hidden" id="edit_id" name="id" />
+        <button type="submit" class="btn-add">Salvează modificările</button>
+        <button type="button" onclick="closeEditCollectionModal()" class="btn-delete" style="margin-left:10px;">Anulează</button>
+      </form>
+      <div id="editCollectionMsg" style="margin-top:20px;"></div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="add-obiect-modal" style="display:none;">
+    <div class="modal" style="max-width:520px;">
+      <h2>Adaugă obiect în colecție</h2>
+      <form id="addObiectForm" enctype="multipart/form-data" class="add-collection-form">
+        <input type="hidden" id="add_obiect_colectie_id" name="colectie_id" />
+        <label for="add_obiect_titlu">Titlu obiect <span style="color:#E30613">*</span>:</label>
+        <input type="text" id="add_obiect_titlu" name="titlu" required />
+        <label for="add_obiect_categorie">Categorie <span style="color:#E30613">*</span>:</label>
+        <input type="text" id="add_obiect_categorie" name="categorie" required />
+        <label for="add_obiect_material">Material:</label>
+        <input type="text" id="add_obiect_material" name="material" />
+        <label for="add_obiect_valoare">Valoare (lei):</label>
+        <input type="number" id="add_obiect_valoare" name="valoare" min="0" step="0.01" />
+        <label for="add_obiect_tara">Țara:</label>
+        <input type="text" id="add_obiect_tara" name="tara" />
+        <label for="add_obiect_perioada">Perioada utilizare:</label>
+        <input type="text" id="add_obiect_perioada" name="perioada" />
+        <label for="add_obiect_eticheta">Etichetă:</label>
+        <select id="add_obiect_eticheta" name="eticheta">
+          <option value="">-</option>
+          <option value="1">Da</option>
+          <option value="0">Nu</option>
+        </select>
+        <label for="add_obiect_descriere">Descriere:</label>
+        <input type="text" id="add_obiect_descriere" name="descriere" />
+        <label for="add_obiect_an">An:</label>
+        <input type="number" id="add_obiect_an" name="an" min="0" />
+        <label for="add_obiect_imagine">Poză obiect:</label>
+        <input type="file" id="add_obiect_imagine" name="imagine" accept="image/*" />
+        <button type="submit" class="btn-add">Adaugă obiectul</button>
+        <button type="button" onclick="closeAddObiectModal()" class="btn-delete" style="margin-left:10px;">Anulează</button>
+      </form>
+      <div id="addObiectMsg" style="margin-top:20px;"></div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="edit-obiect-modal" style="display:none;">
+    <div class="modal" style="max-width:520px;">
+      <h2>Editează obiect</h2>
+      <form id="editObiectForm" enctype="multipart/form-data" class="add-collection-form">
+        <input type="hidden" id="edit_obiect_id" name="id" />
+        <label for="edit_obiect_titlu">Titlu obiect <span style="color:#E30613">*</span>:</label>
+        <input type="text" id="edit_obiect_titlu" name="titlu" required />
+        <label for="edit_obiect_categorie">Categorie <span style="color:#E30613">*</span>:</label>
+        <input type="text" id="edit_obiect_categorie" name="categorie" required />
+        <label for="edit_obiect_material">Material:</label>
+        <input type="text" id="edit_obiect_material" name="material" />
+        <label for="edit_obiect_valoare">Valoare (lei):</label>
+        <input type="number" id="edit_obiect_valoare" name="valoare" min="0" step="0.01" />
+        <label for="edit_obiect_tara">Țara:</label>
+        <input type="text" id="edit_obiect_tara" name="tara" />
+        <label for="edit_obiect_perioada">Perioada utilizare:</label>
+        <input type="text" id="edit_obiect_perioada" name="perioada" />
+        <label for="edit_obiect_eticheta">Etichetă:</label>
+        <select id="edit_obiect_eticheta" name="eticheta">
+          <option value="">-</option>
+          <option value="1">Da</option>
+          <option value="0">Nu</option>
+        </select>
+        <label for="edit_obiect_descriere">Descriere:</label>
+        <input type="text" id="edit_obiect_descriere" name="descriere" />
+        <label for="edit_obiect_an">An:</label>
+        <input type="number" id="edit_obiect_an" name="an" min="0" />
+        <label for="edit_obiect_imagine">Poză obiect (opțional):</label>
+        <input type="file" id="edit_obiect_imagine" name="imagine" accept="image/*" />
+        <button type="submit" class="btn-add">Salvează modificările</button>
+        <button type="button" onclick="closeEditObiectModal()" class="btn-delete" style="margin-left:10px;">Anulează</button>
+      </form>
+      <div id="editObiectMsg" style="margin-top:20px;"></div>
+    </div>
+  </div>
+
+  <script src="js/colectiile_mele.js"></script>
+</body>
+</html>

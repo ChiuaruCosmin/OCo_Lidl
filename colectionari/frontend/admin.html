@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin - Colectionari</title>
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-links">
+      <a href="dashboard.html">🏠 Acasă</a>
+      <a href="colectiile_mele.html">📚 Colecțiile mele</a>
+      <a href="cumpara_obiecte.html">🏷️ Cumpără</a>
+      <a href="vinde_obiecte.html">💵 Vinde</a>
+    </div>
+    <div class="logout-button">
+      <button id="logoutBtn" class="logout-link">Deconectare</button>
+    </div>
+  </nav>
+  <h1 class="admin-title">Pagina administrativă</h1>
+  <main class="admin-container">
+    <section class="admin-main">
+      <div class="admin-search-block">
+        <input type="text" id="searchCollectionInput" placeholder="Caută colecție..." />
+      </div>
+      <div id="adminCollectionsList" class="admin-collections-list"></div>
+      <div class="admin-search-block">
+        <input type="text" id="searchUserInput" placeholder="Caută utilizator..." />
+      </div>
+      <div id="adminUsersList" class="admin-users-list"></div>
+    </section>
+    <aside class="admin-sidebar">
+      <h3>Probleme raportate</h3>
+      <div id="adminProblemsList" class="admin-problems-list"></div>
+      <h4>Istoric probleme raportate</h4>
+      <div id="adminProblemsHistory" class="admin-problems-history"></div>
+      <h3>Istoric acțiuni admin</h3>
+      <div id="adminActionsHistory" class="admin-actions-history"></div>
+    </aside>
+  </main>
+  <script src="js/admin.js"></script>
+</body>
+</html> 

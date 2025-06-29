@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Colecțiile Tale</title>
+  <link rel="stylesheet" href="css/landing.css" />
+</head>
+<body>
+
+  <header class="hero-section">
+    <div class="hero-content">
+      <h1>Organizează, împărtășește și explorează colecțiile tale</h1>
+      <button onclick="window.location.href='register.html'">începe acum</button>
+    </div>
+    <div class="hero-image">
+      <img src="assets/landing-hero.png" alt="Colecții populare" />
+    </div>
+  </header>
+
+  <main>
+    <section class="search-section">
+      <h2>Căutare multi-criterială</h2>
+      <form class="search-form">
+        <div class="search-input-wrapper">
+          <span class="search-icon-prefix">🔍</span>
+          <input type="text" placeholder="Căutare" />
+        </div>
+        <select aria-label="Tip">
+          <option selected disabled>Tip</option>
+          <option value="timbre">Timbre</option>
+          <option value="vinil">Discuri de vinil</option>
+          <option value="jucarii">Jucării</option>
+        </select>
+        <select aria-label="Valoare">
+          <option selected disabled>Valoare</option>
+          <option value="mica">Mică</option>
+          <option value="medie">Medie</option>
+          <option value="mare">Mare</option>
+        </select>
+        <select aria-label="Țară">
+          <option selected disabled>Țară</option>
+          <option value="ro">România</option>
+          <option value="md">Moldova</option>
+          <option value="de">Germania</option>
+        </select>
+        <button type="submit" class="search-submit-button" aria-label="Caută">
+          <span class="search-icon-magnifying-glass">🔍</span>
+        </button>
+      </form>
+    </section>
+
+    <div class="main-content-columns">
+      <div class="left-column">
+        <section class="popular-collections">
+          <h3>Colecții populare</h3>
+          <div class="collections-grid" id="popular-collections"></div>
+        </section>
+
+        <section class="last-shared-collections-left">
+          <h3>Ultimele colecții partajate</h3>
+          <ul class="shared-list" id="latest-collections"></ul>
+        </section>
+      </div>
+
+      <div class="right-column">
+        <section class="collectors-leaderboard">
+          <h3>Clasament colecționari</h3>
+          <ol class="leaderboard-list" id="leaderboard"></ol>
+        </section>
+
+        <section class="last-shared-collections-right">
+          <h3>Top categorii populare</h3>
+          <ul class="shared-list-right" id="top-categories"></ul>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <div class="modal-overlay" id="guestModal" style="display:none;">
+    <div class="modal-box">
+      <p>Pentru a vedea mai multe, conectează-te.</p>
+      <div class="modal-buttons">
+        <button onclick="location.href='login.html'" class="start-btn">Începe acum</button>
+        <button onclick="document.getElementById('guestModal').style.display='none'" class="cancel-btn">Nu, mulțumesc</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/landing.js"></script>
+</body>
+</html>
